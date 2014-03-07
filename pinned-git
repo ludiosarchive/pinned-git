@@ -49,6 +49,12 @@ if [[ "$cmd" == "clone" || "$cmd" == "cl" ]]; then
 
   elif [[ "$*" == *https://git.gnome.org/* ]]; then
     "$GIT" clone --config "http.sslCAInfo=$CERTS/bugzilla.gnome.org.crt" "$@"
+
+  elif [[ "$*" == *https://gitlab.com/* ]]; then
+    "$GIT" clone --config "http.sslCAInfo=$CERTS/gitlab.com.crt" "$@"
+
+  elif [[ "$*" == *https://fusionforge.org/* ]]; then
+    "$GIT" clone --config "http.sslCAInfo=$CERTS/fusionforge.org.crt" "$@"
   else
     "$GIT" clone "$@"
   fi
