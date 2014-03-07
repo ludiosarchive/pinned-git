@@ -40,6 +40,9 @@ if [[ "$cmd" == "clone" || "$cmd" == "cl" ]]; then
 
   elif [[ "$*" == *https://git.overlays.gentoo.org/* ]]; then
     "$GIT" clone --config "http.sslCAInfo=$CERTS/wildcard.gentoo.org.crt" "$@"
+
+  elif [[ "$*" == *https://alioth.debian.org/* ]]; then
+    "$GIT" clone --config "http.sslCAInfo=$CERTS/alioth.debian.org.crt" "$@"
   else
     "$GIT" clone "$@"
   fi
