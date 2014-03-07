@@ -43,6 +43,9 @@ if [[ "$cmd" == "clone" || "$cmd" == "cl" ]]; then
 
   elif [[ "$*" == *https://alioth.debian.org/* ]]; then
     "$GIT" clone --config "http.sslCAInfo=$CERTS/alioth.debian.org.crt" "$@"
+
+  elif [[ "$*" == *https://git.eclipse.org/* ]]; then
+    "$GIT" clone --config "http.sslCAInfo=$CERTS/wildcard.eclipse.org.crt" "$@"
   else
     "$GIT" clone "$@"
   fi
