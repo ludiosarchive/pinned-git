@@ -20,3 +20,4 @@ This is pre-alpha software and has only been tested on Ubuntu 13.10.  Do not exp
 * https://git.overlays.gentoo.org/
 * https://alioth.debian.org/
 * https://git.eclipse.org/
+* https://git.gnome.org/
