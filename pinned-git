@@ -15,48 +15,48 @@ cmd="$1"
 shift
 if [[ "$cmd" == "clone" || "$cmd" == "cl" ]]; then
   if [[ "$*" == *https://github.com/* ]]; then
-    "$GIT" clone --config "http.sslCAInfo=$CERTS/github.com.crt" "$@"
+    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/github.com.crt" "$@"
 
   elif [[ "$*" == *https://bitbucket.org/* ]]; then
-    "$GIT" clone --config "http.sslCAInfo=$CERTS/bitbucket.org.crt" "$@"
+    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/bitbucket.org.crt" "$@"
 
   elif [[ "$*" == *https://code.google.com/* ]]; then
-    "$GIT" clone --config "http.sslCAInfo=$CERTS/wildcard.google.com.crt" "$@"
+    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/wildcard.google.com.crt" "$@"
 
   elif [[ "$*" == *https://git.gitorious.org/* ]]; then
-    "$GIT" clone --config "http.sslCAInfo=$CERTS/wildcard.gitorious.org.crt" "$@"
+    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/wildcard.gitorious.org.crt" "$@"
 
   elif [[ "$*" == *https://git.kernel.org/* ]]; then
-    "$GIT" clone --config "http.sslCAInfo=$CERTS/www.kernel.org.crt" "$@"
+    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/www.kernel.org.crt" "$@"
 
   elif [[ "$*" == *https://kernel.googlesource.com/* ]]; then
-    "$GIT" clone --config "http.sslCAInfo=$CERTS/wildcard.googlecode.com.crt" "$@"
+    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/wildcard.googlecode.com.crt" "$@"
 
   elif [[ "$*" == *https://chromium.googlesource.com/* ]]; then
-    "$GIT" clone --config "http.sslCAInfo=$CERTS/wildcard.googlecode.com.crt" "$@"
+    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/wildcard.googlecode.com.crt" "$@"
 
   elif [[ "$*" == *https://android.googlesource.com/* ]]; then
-    "$GIT" clone --config "http.sslCAInfo=$CERTS/wildcard.googlecode.com.crt" "$@"
+    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/wildcard.googlecode.com.crt" "$@"
 
   elif [[ "$*" == *https://git.overlays.gentoo.org/* ]]; then
-    "$GIT" clone --config "http.sslCAInfo=$CERTS/wildcard.gentoo.org.crt" "$@"
+    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/wildcard.gentoo.org.crt" "$@"
 
   elif [[ "$*" == *https://alioth.debian.org/* ]]; then
-    "$GIT" clone --config "http.sslCAInfo=$CERTS/alioth.debian.org.crt" "$@"
+    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/alioth.debian.org.crt" "$@"
 
   elif [[ "$*" == *https://git.eclipse.org/* ]]; then
-    "$GIT" clone --config "http.sslCAInfo=$CERTS/wildcard.eclipse.org.crt" "$@"
+    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/wildcard.eclipse.org.crt" "$@"
 
   elif [[ "$*" == *https://git.gnome.org/* ]]; then
-    "$GIT" clone --config "http.sslCAInfo=$CERTS/bugzilla.gnome.org.crt" "$@"
+    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/bugzilla.gnome.org.crt" "$@"
 
   elif [[ "$*" == *https://gitlab.com/* ]]; then
-    "$GIT" clone --config "http.sslCAInfo=$CERTS/gitlab.com.crt" "$@"
+    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/gitlab.com.crt" "$@"
 
   elif [[ "$*" == *https://fusionforge.org/* ]]; then
-    "$GIT" clone --config "http.sslCAInfo=$CERTS/fusionforge.org.crt" "$@"
+    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/fusionforge.org.crt" "$@"
   else
-    "$GIT" clone "$@"
+    "$GIT" "$cmd" "$@"
   fi
 else
   "$GIT" "$cmd" "$@"
