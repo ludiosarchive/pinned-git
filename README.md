@@ -6,7 +6,7 @@ Do you trust all 160 parties in `/etc/ssl/certs` to identify only the real GitHu
 
 Because `sslcainfo = ` is set to an absolute path, you should install **pinned-git** to a location that will not change.
 
-This is pre-alpha software and it has been tested only on Ubuntu 13.10.  Do not expect actual security yet.  Also, pinning functionality would be better to implement in git itself.
+This is pre-alpha software and it has been tested only on Ubuntu 13.10.  Do not expect actual security yet.  Also, pinning functionality would be better to implement in git or curl instead.
 
 
 ## Pinned domain list
