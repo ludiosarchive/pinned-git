@@ -22,6 +22,14 @@ if [[ "$cmd" == "clone" || "$cmd" == "cl" ]]; then
     "$GIT" clone --config "http.sslCAInfo=$CERTS/wildcard.google.com.crt" "$@"
   elif [[ "$*" == *https://git.gitorious.org/* ]]; then
     "$GIT" clone --config "http.sslCAInfo=$CERTS/wildcard.gitorious.org.crt" "$@"
+  elif [[ "$*" == *https://git.kernel.org/* ]]; then
+    "$GIT" clone --config "http.sslCAInfo=$CERTS/www.kernel.org.crt" "$@"
+  elif [[ "$*" == *https://kernel.googlesource.com/* ]]; then
+    "$GIT" clone --config "http.sslCAInfo=$CERTS/wildcard.googlecode.com.crt" "$@"
+  elif [[ "$*" == *https://chromium.googlesource.com/* ]]; then
+    "$GIT" clone --config "http.sslCAInfo=$CERTS/wildcard.googlecode.com.crt" "$@"
+  elif [[ "$*" == *https://android.googlesource.com/* ]]; then
+    "$GIT" clone --config "http.sslCAInfo=$CERTS/wildcard.googlecode.com.crt" "$@"
   else
     "$GIT" clone "$@"
   fi

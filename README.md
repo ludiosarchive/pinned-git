@@ -1,4 +1,4 @@
-Do you trust all 160 parties in `/etc/ssl/certs` to authenticate your connection to github.com?  If not, you probably want to pin some SSL certificates before cloning.  **pinned-git** does this for github.com, bitbucket.org, code.google.com, and git.gitorious.org.
+Do you trust all 160 parties in `/etc/ssl/certs` to authenticate your connection to github.com?  If not, you probably want to pin some SSL certificates before cloning.  **pinned-git** does this for github.com, bitbucket.org, code.google.com, git.gitorious.org, git.kernel.org, kernel.googlesource.com, chromium.googlesource.com, and android.googlesource.com.
 
 pinned-git protects only `git clone` right now.
 
