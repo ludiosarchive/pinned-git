@@ -30,6 +30,8 @@ if [[ "$cmd" == "clone" || "$cmd" == "cl" ]]; then
     "$GIT" clone --config "http.sslCAInfo=$CERTS/wildcard.googlecode.com.crt" "$@"
   elif [[ "$*" == *https://android.googlesource.com/* ]]; then
     "$GIT" clone --config "http.sslCAInfo=$CERTS/wildcard.googlecode.com.crt" "$@"
+  elif [[ "$*" == *https://git.overlays.gentoo.org/* ]]; then
+    "$GIT" clone --config "http.sslCAInfo=$CERTS/wildcard.gentoo.org.crt" "$@"
   else
     "$GIT" clone "$@"
   fi
