@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Usage:
+# Put pinned-git in your PATH
+# alias git=pinned-git
+
+
+GIT="/usr/bin/git"
+
+CERTS="$(dirname "$0")/certs"
+
+#export GIT_CURL_VERBOSE=1
+
+cmd="$1"
+shift
+if [[ "$cmd" == "clone" || "$cmd" == "cl" ]]; then
+  if [[ "$*" == *https://github.com/* ]]; then
+    "$GIT" clone --config "http.sslCAInfo=$CERTS/github.com.crt" "$@"
+  elif [[ "$*" == *https://bitbucket.org/* ]]; then
+    "$GIT" clone --config "http.sslCAInfo=$CERTS/bitbucket.org.crt" "$@"
+  elif [[ "$*" == *https://code.google.com/* ]]; then
+    "$GIT" clone --config "http.sslCAInfo=$CERTS/wildcard.google.com.crt" "$@"
+  elif [[ "$*" == *https://git.gitorious.org/* ]]; then
+    "$GIT" clone --config "http.sslCAInfo=$CERTS/wildcard.gitorious.org.crt" "$@"
+  else
+    "$GIT" clone "$@"
+  fi
+else
+  "$GIT" "$cmd" "$@"
+fi
