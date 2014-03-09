@@ -24,4 +24,3 @@ This is pre-alpha software and it has been tested only on Ubuntu 13.10.  Do not 
 * https://git.eclipse.org/
 * https://git.gnome.org/
 * https://gitlab.com/
-* https://fusionforge.org/
