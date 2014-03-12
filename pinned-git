@@ -5,7 +5,7 @@
 # alias git=pinned-git
 
 
-GIT="/usr/bin/git"
+GIT="$(type -p git)"
 
 CERTS="$(dirname "$0")/certs"
 
