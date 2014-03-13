@@ -34,7 +34,7 @@ Beware, this is alpha-quality software!
 
 ## GitHub-only alternative for non-Debian/Ubuntu users
 
-If GitHub knows about your public key, it will provide read-only access over SSH to any public repository, not just repositories you can write to.  For example, instead of
+If GitHub knows about your public key, it will provide read-only SSH access to any public repository, not just repositories you can write to.  For example, instead of
 
 ```
 git clone https://github.com/ludios/Desktopmagic
