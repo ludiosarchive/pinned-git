@@ -1,10 +1,10 @@
 # pinned-git
 
-Do you trust all 160 parties in `/etc/ssl/certs` to identify only the real GitHub as github.com?  If not, you probably want to pin some SSL certificates, to make sure no men in the middle can modify your git fetch traffic in transit.  git doesn't support this, but **pinned-git** will automatically pin the right certificate for the domain you're cloning from.  **pinned-git** supports pinning for the domains listed below.  If there is no pin for the domain being cloned from, it will proceed anyway without a pin.
+Do you trust all 160 parties in `/etc/ssl/certs` to identify only the real GitHub as github.com?  If not, you probably want to pin some SSL certificates, to make sure no men in the middle can modify your git fetch traffic in transit.  git doesn't support this, but pinned-git will automatically pin the right certificate for the domain you're cloning from.  pinned-git supports pinning for the domains listed below.  If there is no pin for the domain being cloned from, it will proceed anyway without a pin.
 
-**pinned-git** protects `git clone` and subsequent fetches in the cloned repo, assuming that you keep the `[http] sslcainfo = ` option in the clone's `~/.git/config`.
+pinned-git protects `git clone` and subsequent fetches in the cloned repo, assuming that you keep the `[http] sslcainfo = ` option in the clone's `~/.git/config`.
 
-Because `sslcainfo = ` is set to an absolute path, you should install **pinned-git** to a location that will not change.
+Because `sslcainfo = ` is set to an absolute path, you should install pinned-git to a location that will not change.
 
 Beware, this is alpha-quality software!
 
