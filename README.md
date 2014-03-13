@@ -46,7 +46,7 @@ you can use
 git clone git@github.com:ludios/Desktopmagic
 ```
 
-Make sure you get the right key from GitHub.  They have [a page listing their SSH key fingerprints](https://help.github.com/articles/what-are-github-s-ssh-key-fingerprints).
+Make sure you get the right key from GitHub.  See [their page listing their SSH key fingerprints](https://help.github.com/articles/what-are-github-s-ssh-key-fingerprints).
 
 
 ## Pinned domain list
