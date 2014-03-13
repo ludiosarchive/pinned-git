@@ -36,6 +36,23 @@ Beware, this is alpha-quality software!
 		OS X 10.8 users might notice that `pinned-git` works with the system's `/usr/bin/git`.  This is because OS X 10.8's `git` uses OpenSSL 0.9.8r.  `pinned-git` won't work on OS X 10.9, though, because [Apple changed curl to use their own Secure Transport engine](http://curl.haxx.se/mail/archive-2013-10/0036.html).
 
 
+## GitHub-only alternative for non-Debian/Ubuntu/OS X 10.8 users
+
+If GitHub knows about your public key, it will provide read-only access over SSH to any public repository, not just repositories you can write to.  For example, instead of
+
+```
+git clone https://github.com/ludios/Desktopmagic
+```
+
+you can use
+
+```
+git clone git@github.com:ludios/Desktopmagic
+```
+
+Make sure you get the right key from GitHub.  They have [a page listing their SSH key fingerprints](https://help.github.com/articles/what-are-github-s-ssh-key-fingerprints).
+
+
 ## Pinned domain list
 
 * https://github.com/
