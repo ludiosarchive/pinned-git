@@ -6,55 +6,60 @@
 
 
 GIT="$(type -p git)"
-
-CERTS="$(dirname "$0")/certs"
+SELF="$(dirname "$0")"
 
 #export GIT_CURL_VERBOSE=1
+
+pinned-git-clone() {
+  local cert_name=$1
+  shift
+  "$GIT" "$cmd" --config "http.sslCAPath=$SELF/emptydir" --config "http.sslCAInfo=$SELF/certs/${cert_name}.crt" "$@"
+}
 
 cmd="$1"
 shift
 if [[ "$cmd" == "clone" || "$cmd" == "cl" ]]; then
   if [[ "$*" == *https://github.com/* ]]; then
-    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/github.com.crt" "$@"
+    pinned-git-clone github.com "$@"
 
   elif [[ "$*" == *https://bitbucket.org/* ]]; then
-    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/bitbucket.org.crt" "$@"
+    pinned-git-clone bitbucket.org "$@"
 
   elif [[ "$*" == *https://code.google.com/* ]]; then
-    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/wildcard.google.com.crt" "$@"
+    pinned-git-clone wildcard.google.com "$@"
 
   elif [[ "$*" == *https://git.gitorious.org/* ]]; then
-    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/wildcard.gitorious.org.crt" "$@"
+    pinned-git-clone wildcard.gitorious.org "$@"
 
   elif [[ "$*" == *https://git.kernel.org/* ]]; then
-    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/www.kernel.org.crt" "$@"
+    pinned-git-clone www.kernel.org "$@"
 
   elif [[ "$*" == *https://kernel.googlesource.com/* ]]; then
-    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/wildcard.googlecode.com.crt" "$@"
+    pinned-git-clone wildcard.googlecode.com "$@"
 
   elif [[ "$*" == *https://chromium.googlesource.com/* ]]; then
-    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/wildcard.googlecode.com.crt" "$@"
+    pinned-git-clone wildcard.googlecode.com "$@"
 
   elif [[ "$*" == *https://android.googlesource.com/* ]]; then
-    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/wildcard.googlecode.com.crt" "$@"
+    pinned-git-clone wildcard.googlecode.com "$@"
 
   elif [[ "$*" == *https://git.overlays.gentoo.org/* ]]; then
-    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/wildcard.gentoo.org.crt" "$@"
+    pinned-git-clone wildcard.gentoo.org "$@"
 
   elif [[ "$*" == *https://alioth.debian.org/* ]]; then
-    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/alioth.debian.org.crt" "$@"
+    pinned-git-clone alioth.debian.org "$@"
 
   elif [[ "$*" == *https://git.eclipse.org/* ]]; then
-    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/wildcard.eclipse.org.crt" "$@"
+    pinned-git-clone wildcard.eclipse.org "$@"
 
   elif [[ "$*" == *https://git.gnome.org/* ]]; then
-    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/bugzilla.gnome.org.crt" "$@"
+    pinned-git-clone bugzilla.gnome.org "$@"
 
   elif [[ "$*" == *https://gitlab.com/* ]]; then
-    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/gitlab.com.crt" "$@"
+    pinned-git-clone gitlab.com "$@"
 
   elif [[ "$*" == *https://fusionforge.org/* ]]; then
-    "$GIT" "$cmd" --config "http.sslCAInfo=$CERTS/fusionforge.org.crt" "$@"
+    pinned-git-clone fusionforge.org "$@"
   else
     "$GIT" "$cmd" "$@"
   fi
