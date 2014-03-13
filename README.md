@@ -27,9 +27,13 @@ Beware, this is alpha-quality software!
 
 		pinned-git puts non-CA certs in a CA bundle and tells git/curl to use the right bundle for a specific site.  This works fine with GnuTLS: it doesn't insist on validating the entire certificate chain if we trust the website's cert.
 
-		For non-self-signed certificates, OpenSSL requires that we provide enough of a certificate chain in our CA bundle to reach a trusted root CA.  If we provide just just the website's (non-self-signed) cert, `X509_verify_cert` fails with `X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY` ("SSL certificate problem: unable to get local issuer certificate")
+		That doesn't work with OpenSSL, though.  For non-self-signed certificates, OpenSSL requires that we provide enough of a certificate chain in our CA bundle to reach a trusted root CA.  If we provide just just the website's (non-self-signed) cert, `X509_verify_cert` fails with `X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY` ("SSL certificate problem: unable to get local issuer certificate")
 
 		If we do provide a CA certificate in our CA bundle, we can only get CA pinning, not pinning to the exact certificate the site provides.  CA pinning is better than nothing, but we're not interested in providing this lower level of security.
+
+		Why doesn't OpenSSL trust the non-CA certificates and terminate chain validation early?  Well, OpenSSL 0.9.8 did, but OpenSSL 1.0.x changed `X509_verify_cert` to make sure the certificate has a trust setting enabled before trusting it.  This trust setting only works for CA certificates, though.  If you use `openssl x509 -trustout` to create a trusted version of a non-CA certificate, `X509_verify_cert` will still fail with the same `X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY`.  ["Future versions of OpenSSL will recognize trust settings on any certificate: not just root CAs."](https://www.openssl.org/docs/apps/x509.html#TRUST_SETTINGS)
+
+		OS X 10.8 users might notice that `pinned-git` works with the system's `/usr/bin/git`.  This is because OS X 10.8's `git` uses OpenSSL 0.9.8r.  `pinned-git` won't work on OS X 10.9, though, because [Apple changed curl to use their own Secure Transport engine](http://curl.haxx.se/mail/archive-2013-10/0036.html).
 
 
 ## Pinned domain list
