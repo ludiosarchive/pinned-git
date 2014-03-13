@@ -32,9 +32,11 @@ Beware, this is alpha-quality software!
 		If we included a root CA certificate in our CA bundle, we would only get CA pinning, not pinning to the exact certificate the site provides.  CA pinning is better than nothing, but we're not interested in providing this lower level of security.
 
 
-## GitHub-only alternative for non-Debian/Ubuntu users
+## SSH-based alternatives for fetching without trusting CAs
 
-If GitHub knows about your public key, it will provide read-only SSH access to any public repository, not just repositories you can write to.  For example, instead of
+### GitHub
+
+If GitHub knows about your public SSH key, it will provide read-only SSH access to any public repository, not just repositories you can write to.  For example, instead of
 
 ```
 git clone https://github.com/ludios/Desktopmagic
@@ -47,6 +49,22 @@ git clone git@github.com:ludios/Desktopmagic
 ```
 
 Make sure you get the right key from GitHub.  See [their page listing their SSH key fingerprints](https://help.github.com/articles/what-are-github-s-ssh-key-fingerprints).
+
+### BitBucket
+
+BitBucket will also provide read-only SSH access to any public repository, as long as they know your public SSH key.  For example, instead of
+
+```
+git clone https://bitbucket.org/jcreenaune/svn-git-mirror
+```
+
+you can use
+
+```
+git clone git@bitbucket.org:jcreenaune/svn-git-mirror
+```
+
+[BitBucket's fingerprints are listed here](https://confluence.atlassian.com/display/BITBUCKET/Use+the+SSH+protocol+with+Bitbucket#UsetheSSHprotocolwithBitbucket-KnownhostorBitbucket'spublickeyfingerprints).
 
 
 ## Pinned domain list
