@@ -7,7 +7,7 @@ set -e
 
 GIT="$PWD/pinned-git"
 
-cd "$(mktemp -t -d)"
+cd "$(mktemp -d -t pinned-git-tests.XXXXXXXXXX)"
 
 "$GIT" clone https://github.com/ludios/Desktopmagic
 "$GIT" clone https://bitbucket.org/jcreenaune/svn-git-mirror
