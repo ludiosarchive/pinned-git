@@ -19,7 +19,7 @@ Beware, this is alpha-quality software!
 
 	*	You have this if you're using the git package on Debian or Ubuntu.
 
-	*	You don't have this if you're using the git package on CentOS, Fedora, or Cygwin.
+	*	You don't have this if you're using the git package on CentOS, Fedora, OS X, or Cygwin.
 
 	*	You can run `ldd` on `git-remote-https`; it should not be linked to `libcrypto.so.*`.
 
@@ -27,16 +27,12 @@ Beware, this is alpha-quality software!
 
 		pinned-git puts non-CA certs in a CA bundle and tells git/curl to use the right bundle for a specific site.  This works fine with GnuTLS: it doesn't insist on validating the entire certificate chain if we trust the website's cert.
 
-		That doesn't work with OpenSSL, though.  For non-self-signed certificates, OpenSSL requires that we provide enough of a certificate chain in our CA bundle to reach a trusted root CA.  If we provide just just the website's (non-self-signed) cert, `X509_verify_cert` fails with `X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY` ("SSL certificate problem: unable to get local issuer certificate")
+		That doesn't work with OpenSSL, though.  For non-self-signed certificates, OpenSSL requires that we provide enough of a certificate chain in our CA bundle to reach a trusted root CA.  If we provide just just the website's (non-self-signed) cert, `X509_verify_cert` fails with `X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY` ("SSL certificate problem: unable to get local issuer certificate").  This happens whether or not it's been marked with a trusted bit with `openssl x509 -trustout`.  ["Future versions of OpenSSL will recognize trust settings on any certificate: not just root CAs."](https://www.openssl.org/docs/apps/x509.html#TRUST_SETTINGS)
 
-		If we do provide a CA certificate in our CA bundle, we can only get CA pinning, not pinning to the exact certificate the site provides.  CA pinning is better than nothing, but we're not interested in providing this lower level of security.
-
-		Why doesn't OpenSSL trust the non-CA certificates and terminate chain validation early?  Well, OpenSSL 0.9.8 did, but OpenSSL 1.0.x changed `X509_verify_cert` to make sure the certificate has a trust setting enabled before trusting it.  This trust setting only works for CA certificates.  If you use `openssl x509 -trustout` to create a trusted version of a non-CA certificate, `X509_verify_cert` will still fail with the same `X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY`.  ["Future versions of OpenSSL will recognize trust settings on any certificate: not just root CAs."](https://www.openssl.org/docs/apps/x509.html#TRUST_SETTINGS)
-
-		OS X 10.8 users might notice that `pinned-git` works with the system's `/usr/bin/git`.  This is because OS X 10.8's `git` uses OpenSSL 0.9.8r.  But `pinned-git` won't work on OS X 10.9, because [Apple changed curl to use their own Secure Transport engine](http://curl.haxx.se/mail/archive-2013-10/0036.html).
+		If we included a root CA certificate in our CA bundle, we would only get CA pinning, not pinning to the exact certificate the site provides.  CA pinning is better than nothing, but we're not interested in providing this lower level of security.
 
 
-## GitHub-only alternative for non-Debian/Ubuntu/OS X 10.8 users
+## GitHub-only alternative for non-Debian/Ubuntu users
 
 If GitHub knows about your public key, it will provide read-only access over SSH to any public repository, not just repositories you can write to.  For example, instead of
 
