@@ -11,7 +11,7 @@ Beware, this is alpha-quality software!
 
 ## Requirements
 
-*	git 1.7.7 or newer, the first version with `git clone --config ...`
+*	git 1.7.7 or newer.  1.7.7 is the first version that supports `git clone --config ...`
 
 	*	CentOS 6.5 ships git 1.7.1; almost everything else should have a new-enough git.
 
