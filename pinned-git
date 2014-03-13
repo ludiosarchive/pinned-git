@@ -26,40 +26,38 @@ if [[ "$cmd" == "clone" || "$cmd" == "cl" ]]; then
     pinned-git-clone bitbucket.org "$@"
 
   elif [[ "$*" == *https://code.google.com/* ]]; then
-    pinned-git-clone wildcard.google.com "$@"
+    pinned-git-clone code.google.com "$@"
 
   elif [[ "$*" == *https://git.gitorious.org/* ]]; then
-    pinned-git-clone wildcard.gitorious.org "$@"
+    pinned-git-clone git.gitorious.org "$@"
 
   elif [[ "$*" == *https://git.kernel.org/* ]]; then
-    pinned-git-clone www.kernel.org "$@"
+    pinned-git-clone git.kernel.org "$@"
 
   elif [[ "$*" == *https://kernel.googlesource.com/* ]]; then
-    pinned-git-clone wildcard.googlecode.com "$@"
+    pinned-git-clone kernel.googlesource.com "$@"
 
   elif [[ "$*" == *https://chromium.googlesource.com/* ]]; then
-    pinned-git-clone wildcard.googlecode.com "$@"
+    pinned-git-clone chromium.googlesource.com "$@"
 
   elif [[ "$*" == *https://android.googlesource.com/* ]]; then
-    pinned-git-clone wildcard.googlecode.com "$@"
+    pinned-git-clone android.googlesource.com "$@"
 
   elif [[ "$*" == *https://git.overlays.gentoo.org/* ]]; then
-    pinned-git-clone wildcard.gentoo.org "$@"
+    pinned-git-clone git.overlays.gentoo.org "$@"
 
   elif [[ "$*" == *https://alioth.debian.org/* ]]; then
     pinned-git-clone alioth.debian.org "$@"
 
   elif [[ "$*" == *https://git.eclipse.org/* ]]; then
-    pinned-git-clone wildcard.eclipse.org "$@"
+    pinned-git-clone git.eclipse.org "$@"
 
   elif [[ "$*" == *https://git.gnome.org/* ]]; then
-    pinned-git-clone bugzilla.gnome.org "$@"
+    pinned-git-clone git.gnome.org "$@"
 
   elif [[ "$*" == *https://gitlab.com/* ]]; then
     pinned-git-clone gitlab.com "$@"
 
-  elif [[ "$*" == *https://fusionforge.org/* ]]; then
-    pinned-git-clone fusionforge.org "$@"
   else
     "$GIT" "$cmd" "$@"
   fi
