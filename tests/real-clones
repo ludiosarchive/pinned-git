@@ -21,6 +21,4 @@ cd "$(mktemp -d -t pinned-git-tests.XXXXXXXXXX)"
 "$GIT" clone https://git.eclipse.org/gitroot/actf/org.eclipse.actf.visualization.releng.git
 "$GIT" clone https://git.gnome.org/browse/clutter-box2dmm/
 "$GIT" clone https://gitlab.com/gitlab-org/cookbook-gitlab.git
-
-# Our alioth pin works with GnuTLS, but not OpenSSL 0.9.8r, so test it last
 "$GIT" clone https://alioth.debian.org/anonscm/git/pkg-perl/packages/libany-template-processdir-perl.git
