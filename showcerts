@@ -1,0 +1,9 @@
+#!/bin/bash
+
+HOST="$1"
+if [ -z "$HOST" ]; then
+  echo "Need a hostname"
+  exit 1
+else
+  echo -n "" | openssl s_client -connect "$HOST:443" -showcerts
+fi
