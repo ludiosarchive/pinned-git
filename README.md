@@ -1,6 +1,6 @@
 # DEPRECATED
 
-Deprecated because I don't have time to update certificates all the time, especially when 99.9% of the time I need just GitHub.  Use [anonssh-git](https://github.com/ludios/anonssh-git) instead for GitHub.
+Deprecated because I don't have time to update certificates every day, especially when 99.9% of the time I need just GitHub.  Use [anonssh-git](https://github.com/ludios/anonssh-git) instead for GitHub.
 
 
 # pinned-git
