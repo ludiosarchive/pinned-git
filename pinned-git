@@ -27,8 +27,8 @@ if [[ "$cmd" == "clone" || "$cmd" == "cl" ]]; then
     pinned-git-clone gitlab.com "$@"
 
   else
-    "$GIT" "$cmd" "$@"
+    exec "$GIT" "$cmd" "$@"
   fi
 else
-  "$GIT" "$cmd" "$@"
+  exec "$GIT" "$cmd" "$@"
 fi
