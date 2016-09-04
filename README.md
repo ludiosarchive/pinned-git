@@ -6,7 +6,7 @@ When git clones a repository, it trusts all ~173 parties in `/etc/ssl/certs`, ev
 
 Because `sslCAInfo = ` is set to an absolute path, you must install pinned-git to a location that will not change.
 
-pinned-git is more convenient than setting up "anonymous" cloning over the SSH protocol, because you do not have to install and maintain {GitHub, GitLab, ...}-specific SSH keys and configuration on many users/machines.  Instead, just one pinned-git install needs to be kept up to date on the system.
+pinned-git is more convenient than setting up "anonymous" cloning over the SSH protocol, because you do not have to install and maintain {GitHub, GitLab, ...}-specific SSH keys and configuration on many users/machines.  Instead, just one pinned-git install needs to be kept up to date on each machine.
 
 
 ## Requirements
