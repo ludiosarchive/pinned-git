@@ -10,15 +10,13 @@ GIT="$PWD/pinned-git"
 cd "$(mktemp -d -t pinned-git-tests.XXXXXXXXXX)"
 
 "$GIT" clone https://github.com/ludios/Desktopmagic
-"$GIT" clone https://bitbucket.org/jcreenaune/svn-git-mirror
-"$GIT" clone https://code.google.com/p/leveldb-py/
-"$GIT" clone https://git.gitorious.org/lua-subprocess/lua-subprocess.git
-"$GIT" clone https://git.kernel.org/pub/scm/bluetooth/sbc.git
-"$GIT" clone https://kernel.googlesource.com/pub/scm/bluetooth/sbc sbc-googlesource
-"$GIT" clone https://chromium.googlesource.com/chromium/src/third_party/jsoncpp
-"$GIT" clone https://android.googlesource.com/accessories/manifest
-"$GIT" clone https://git.overlays.gentoo.org/gitroot/dev/remi.git
-"$GIT" clone https://git.eclipse.org/gitroot/actf/org.eclipse.actf.visualization.releng.git
-"$GIT" clone https://git.gnome.org/browse/clutter-box2dmm/
+#"$GIT" clone https://bitbucket.org/jcreenaune/svn-git-mirror
+#"$GIT" clone https://git.kernel.org/pub/scm/bluetooth/sbc.git
+#"$GIT" clone https://kernel.googlesource.com/pub/scm/bluetooth/sbc sbc-googlesource
+#"$GIT" clone https://chromium.googlesource.com/chromium/src/third_party/jsoncpp
+#"$GIT" clone https://android.googlesource.com/accessories/manifest
+#"$GIT" clone https://git.overlays.gentoo.org/gitroot/dev/remi.git
+#"$GIT" clone https://git.eclipse.org/gitroot/actf/org.eclipse.actf.visualization.releng.git
+#"$GIT" clone https://git.gnome.org/browse/clutter-box2dmm/
 "$GIT" clone https://gitlab.com/gitlab-org/cookbook-gitlab.git
-"$GIT" clone https://alioth.debian.org/anonscm/git/pkg-perl/packages/libany-template-processdir-perl.git
+#"$GIT" clone https://alioth.debian.org/anonscm/git/pkg-perl/packages/libany-template-processdir-perl.git
