@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Usage: pin-existing-git */.git
+
+GIT="$(type -p git)"
+SELF="$(realpath "$(dirname "$0")")"
+SHARE="$(realpath "$SELF/../share/pinned-git")"
+
+set-pin() {
+  local git_dir=$1
+  local cert_name=$2
+  shift
+  shift
+  echo "Pinning $git_dir -> $cert_name"
+  "$GIT" "--git-dir=$git_dir" config http.sslcapath "$SHARE/empty-dir"
+  "$GIT" "--git-dir=$git_dir" config http.sslcainfo "$SHARE/certs/${cert_name}.crt"
+}
+
+for dir in "$@"; do
+  if grep -q 'url = https://github.com/' "$dir/config"; then
+    set-pin "$dir" github.com
+  elif grep -q 'url = https://gitlab.com/' "$dir/config"; then
+    set-pin "$dir" gitlab.com
+  fi
+done

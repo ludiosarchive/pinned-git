@@ -15,7 +15,7 @@ export OPENSSL_X509_TEA_DISABLE=1
 pinned-git-clone() {
   local cert_name=$1
   shift
-  exec "$GIT" "$cmd" --config "http.sslCAPath=$SHARE/empty-dir" --config "http.sslCAInfo=$SHARE/certs/${cert_name}.crt" "$@"
+  exec "$GIT" "$cmd" --config "http.sslcapath=$SHARE/empty-dir" --config "http.sslcainfo=$SHARE/certs/${cert_name}.crt" "$@"
 }
 
 cmd="$1"
