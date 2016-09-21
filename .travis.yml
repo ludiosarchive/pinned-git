@@ -1,3 +1,6 @@
+sudo: false
+
 language: c
-install: true
-script: ./tests/real-clones
+
+script:
+  - ./tests/real-clones
