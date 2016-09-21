@@ -5,7 +5,7 @@ set -e
 # Runs a pinned-git clone on every domain we have a pin for, to make sure
 # the certificates are still up-to-date.
 
-GIT="$PWD/pinned-git"
+GIT="$PWD/bin/pinned-git"
 
 cd "$(mktemp -d -t pinned-git-tests.XXXXXXXXXX)"
 
