@@ -3,8 +3,8 @@
 # Usage: put pinned-git in your PATH and alias git=pinned-git
 
 GIT="$(type -p git)"
-SELF="$(realpath "$(dirname "$0")")"
-SHARE="$(realpath "$SELF/../share/pinned-git")"
+SELF="$(readlink -f "$(dirname "$0")")"
+SHARE="$(readlink -f "$SELF/../share/pinned-git")"
 
 #export GIT_CURL_VERBOSE=1
 

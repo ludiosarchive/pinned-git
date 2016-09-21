@@ -3,8 +3,8 @@
 # Usage: pin-existing-git */.git
 
 GIT="$(type -p git)"
-SELF="$(realpath "$(dirname "$0")")"
-SHARE="$(realpath "$SELF/../share/pinned-git")"
+SELF="$(readlink -f "$(dirname "$0")")"
+SHARE="$(readlink -f "$SELF/../share/pinned-git")"
 
 set-pin() {
   local git_dir=$1
