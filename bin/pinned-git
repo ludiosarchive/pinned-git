@@ -27,6 +27,9 @@ if [[ "$cmd" == "clone" || "$cmd" == "cl" ]]; then
   elif [[ "$*" == *https://gitlab.com/* ]]; then
     pinned-git-clone gitlab.com "$@"
 
+  elif [[ "$*" == *https://anonscm.debian.org/* ]]; then
+    pinned-git-clone anonscm.debian.org "$@"
+
   else
     exec "$GIT" "$cmd" "$@"
   fi
