@@ -23,5 +23,7 @@ for dir in "$@"; do
     set-pin "$dir" gitlab.com
   elif grep -q 'url = https://anonscm.debian.org/' "$dir/config"; then
     set-pin "$dir" anonscm.debian.org
+  elif grep -q 'url = https://repo.or.cz/' "$dir/config"; then
+    set-pin "$dir" repo.or.cz
   fi
 done
