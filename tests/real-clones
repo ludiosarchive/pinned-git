@@ -11,7 +11,7 @@ cd "$(mktemp -d -t pinned-git-tests.XXXXXXXXXX)"
 
 "$GIT" clone --depth=1 https://github.com/ludios/Desktopmagic
 #"$GIT" clone           https://bitbucket.org/jcreenaune/svn-git-mirror
-#"$GIT" clone           https://git.kernel.org/pub/scm/bluetooth/sbc.git
+"$GIT" clone --depth=1 https://git.kernel.org/pub/scm/bluetooth/sbc.git
 #"$GIT" clone           https://kernel.googlesource.com/pub/scm/bluetooth/sbc sbc-googlesource
 #"$GIT" clone           https://chromium.googlesource.com/chromium/src/third_party/jsoncpp
 #"$GIT" clone           https://android.googlesource.com/accessories/manifest
