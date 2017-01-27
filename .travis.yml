@@ -3,4 +3,4 @@ sudo: false
 language: c
 
 script:
-  - ./tests/real-clones
+  - travis_retry ./tests/real-clones
