@@ -5,6 +5,10 @@
 GIT="$(type -p git)"
 SELF="$(readlink -f "$(dirname "$0")")"
 SHARE="$(readlink -f "$SELF/../share/pinned-git")"
+if [ -z "$SHARE" ]; then
+	echo "Could not find ../share/pinned-git"
+	exit 1
+fi
 
 #export GIT_CURL_VERBOSE=1
 
