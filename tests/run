@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -eu
 
 # Runs a pinned-git clone on every domain we have a pin for, to make sure
 # the certificates are still up-to-date.
@@ -22,3 +22,7 @@ cd "$(mktemp -d -t pinned-git-tests.XXXXXXXXXX)"
 "$GIT" clone           https://anonscm.debian.org/git/letsencrypt/acme-tiny.git # note: sends bad packs with --depth=1
 "$GIT" clone --depth=1 https://repo.or.cz/hg2git.git
 #"$GIT" clone           https://alioth.debian.org/anonscm/git/pkg-perl/packages/libany-template-processdir-perl.git
+
+# When called with no arguments, pinned-git should work like git,
+# not return an error.
+"$GIT" | grep "usage: git"

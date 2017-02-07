@@ -3,5 +3,4 @@ sudo: false
 language: c
 
 script:
-  - travis_retry ./tests/real-clones
-  - ./bin/pinned-git | grep "usage: git"
+  - travis_retry ./tests/run
