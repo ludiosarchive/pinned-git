@@ -22,6 +22,7 @@ pinned-git-clone() {
   exec "$GIT" "$cmd" --config "http.sslcapath=$SHARE/empty-dir" --config "http.sslcainfo=$SHARE/certs/${cert_name}.crt" "$@"
 }
 
+args=("$@")
 cmd="$1"
 shift
 if [[ "$cmd" == "clone" || "$cmd" == "cl" ]]; then
@@ -41,8 +42,8 @@ if [[ "$cmd" == "clone" || "$cmd" == "cl" ]]; then
     pinned-git-clone repo.or.cz "$@"
 
   else
-    exec "$GIT" "$cmd" "$@"
+    exec "$GIT" "${args[@]}"
   fi
 else
-  exec "$GIT" "$cmd" "$@"
+  exec "$GIT" "${args[@]}"
 fi
