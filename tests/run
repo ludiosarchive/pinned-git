@@ -23,6 +23,9 @@ cd "$(mktemp -d -t pinned-git-tests.XXXXXXXXXX)"
 "$GIT" clone --depth=1 https://repo.or.cz/hg2git.git
 #"$GIT" clone           https://alioth.debian.org/anonscm/git/pkg-perl/packages/libany-template-processdir-perl.git
 
+# Make sure that ls-remote also gets pinned (ls-remote is used by yarn)
+"$GIT" ls-remote --tags --heads https://github.com/torkelo/drop
+
 # When called with no arguments, pinned-git should work like git,
 # not return an error.
 "$GIT" | grep "usage: git"

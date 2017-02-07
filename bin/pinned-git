@@ -16,7 +16,9 @@ fi
 # https://hynek.me/articles/apple-openssl-verification-surprises/
 export OPENSSL_X509_TEA_DISABLE=1
 
-pinned-git-clone() {
+do-pinned-git() {
+  local cmd=$1
+  shift
   local cert_name=$1
   shift
   exec "$GIT" "$cmd" --config "http.sslcapath=$SHARE/empty-dir" --config "http.sslcainfo=$SHARE/certs/${cert_name}.crt" "$@"
@@ -25,21 +27,21 @@ pinned-git-clone() {
 args=("$@")
 cmd="$1"
 shift
-if [[ "$cmd" == "clone" || "$cmd" == "cl" ]]; then
+if [[ "$cmd" == "clone" || "$cmd" == "cl" || "$cmd" == "ls-remote" ]]; then
   if [[ "$*" == *https://github.com/* ]]; then
-    pinned-git-clone github.com "$@"
+    do-pinned-git "$cmd" github.com "$@"
 
   elif [[ "$*" == *https://gitlab.com/* ]]; then
-    pinned-git-clone gitlab.com "$@"
+    do-pinned-git "$cmd" gitlab.com "$@"
 
   elif [[ "$*" == *https://anonscm.debian.org/* ]]; then
-    pinned-git-clone anonscm.debian.org "$@"
+    do-pinned-git "$cmd" anonscm.debian.org "$@"
 
   elif [[ "$*" == *https://git.kernel.org/* ]]; then
-    pinned-git-clone git.kernel.org "$@"
+    do-pinned-git "$cmd" git.kernel.org "$@"
 
   elif [[ "$*" == *https://repo.or.cz/* ]]; then
-    pinned-git-clone repo.or.cz "$@"
+    do-pinned-git "$cmd" repo.or.cz "$@"
 
   else
     exec "$GIT" "${args[@]}"
