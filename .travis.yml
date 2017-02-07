@@ -4,4 +4,4 @@ language: c
 
 script:
   - travis_retry ./tests/real-clones
-  - ./bin/pinned-git | grep "These are common Git commands"
+  - ./bin/pinned-git | grep "usage: git"
