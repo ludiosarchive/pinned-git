@@ -2,11 +2,11 @@
 
 # Usage: put pinned-git in your PATH and alias git=pinned-git
 
-GIT="$(type -p git)"
-SELF="$(readlink -f "$(dirname "$0")")"
-SHARE="$(readlink -f "$SELF/../share/pinned-git")"
+GIT=/usr/bin/git
+SELF="$(dirname "$(readlink -f -- "$0")")"
+SHARE="$SELF/../share/pinned-git"
 if [ -z "$SHARE" ]; then
-	echo "Could not find ../share/pinned-git"
+	echo "Could not find share/pinned-git"
 	exit 1
 fi
 
