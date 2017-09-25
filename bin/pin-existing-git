@@ -27,7 +27,5 @@ for dir in "$@"; do
     set-pin "$dir" git.kernel.org
   elif grep -q 'url = https://repo.or.cz/' "$dir/config"; then
     set-pin "$dir" repo.or.cz
-  elif grep -q 'url = https://git.notmuchmail.org/' "$dir/config"; then
-    set-pin "$dir" git.notmuchmail.org
   fi
 done
