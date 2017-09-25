@@ -41,6 +41,9 @@ if [[ "$cmd" == "clone" || "$cmd" == "cl" ]]; then
   elif [[ "$*" == *https://repo.or.cz/* ]]; then
     pinned-git-clone repo.or.cz "$@"
 
+  elif [[ "$*" == *https://git.notmuchmail.org/* ]]; then
+    pinned-git-clone git.notmuchmail.org "$@"
+
   else
     exec "$GIT" "${args[@]}"
   fi
