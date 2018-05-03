@@ -35,6 +35,9 @@ if [[ "$cmd" == "clone" || "$cmd" == "cl" ]]; then
   elif [[ "$*" == *https://anonscm.debian.org/* ]]; then
     pinned-git-clone anonscm.debian.org "$@"
 
+  elif [[ "$*" == *https://salsa.debian.org/* ]]; then
+    pinned-git-clone salsa.debian.org "$@"
+
   elif [[ "$*" == *https://git.kernel.org/* ]]; then
     pinned-git-clone git.kernel.org "$@"
 
